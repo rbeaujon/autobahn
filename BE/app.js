@@ -35,7 +35,7 @@ app.get('/sectors', cors(), (req, res, next) => {
     let sql = `SELECT * FROM sectors` 
     conn.query(sql, (err, result) => {
       if (err) {
-        console.log(`Failed getting the registered user list,  ${err}.`);
+        console.log(`Failed to get the registered user list,  ${err}.`);
         res
         .set('Content-Type', 'application/json')
         .status(500)
@@ -78,11 +78,11 @@ app.post('/register', cors(), (req, res, next) => {
   const isVerified = Verification(userId, fieldId, session)
 
   if(isVerified === "Empty"){
-      console.log(`Partial Content, json with some fields empties.`);
+      console.log(`Partial Content, json with some fields emptied.`);
       res
       .set('Content-Type', 'application/json')
       .status(206)
-      .json(`Partial Content, json with some fields empties.`)
+      .json(`Partial Content, json with some fields emptied.`)
     
   }else if(isVerified === "Type") {
     console.log(`Bad Request.`);
