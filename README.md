@@ -2,22 +2,22 @@
 
 # AutoBahn
 
-This repository is a simple form to manage an input text, select, and a checkbox with validations and filled with an API NodeJS / MySQL.
+This repository is a simple form to manage 3 fields (input-text, select, checkbox) with validations and fills the data from DB.
 The design was made using material design.
-It was created to manage a session user without login, and it was used the Datetime() to generate a random number.
+It was created to manage a user session without login, and it uses the Datetime() to generate a random number.
 
-The BE manages all the validations, and report by console and JSON all the status code available.  
-Additionally, was added a CORS control because it is required by the hosting server for this app.
+The BE manages all the validations, and reports by console and JSON all the status codes available.  
+Additionally, a CORS control was added because it is required by the hosting server for this app.
 
-The repository has testing under all their modules, create using JEST.
+ Automated tests are covering all modules.
 
 
 ## Technical details
 
-The Front-End was developed using REACTJS, JEST and SASS
-The Back-End was made on NodeJS using the ExpressJS framework and MySQL
+The Front-End was developed using REACTJS, JEST and SASS.
+The Back-End was made on NodeJS using the ExpressJS framework and MySQL.
 
-The Back-End and Front-End have their own dependencies package and runners under NPM
+The Back-End and Front-End have their own dependencies package and runners under NPM.
 
 
 ## Views
@@ -41,7 +41,7 @@ Back-End API [http://localhost:3001]
 
 Server URL : [http://localhost:3001]
 
-### POST /getsession
+### POST /session
 
 #### Parameters
  
@@ -134,7 +134,7 @@ If it has a DB error with the session data
 * Console Response: Failed getting the registered user list + error message.
 
 
-### GET /registered
+### GET /register
 
 #### Parameters
 
