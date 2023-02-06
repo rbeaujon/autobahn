@@ -49,7 +49,7 @@ app.get('/sectors', cors(), (req, res, next) => {
     })
 })
 
-app.get('/registered', cors(), (req, res, next) => {
+app.get('/register', cors(), (req, res, next) => {
 
   //Getting data from MySQL server
 
@@ -140,7 +140,7 @@ app.post('/register', cors(), (req, res, next) => {
   }
 })
 
-app.post('/getsession', cors(), (req, res, next) => {
+app.post('/session', cors(), (req, res, next) => {
 
   const {session} = req.body;
 
