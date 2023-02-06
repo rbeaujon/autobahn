@@ -17,13 +17,12 @@ The repository has testing under all their modules, create using JEST.
 The Front-End was developed using REACTJS, JEST and SASS
 The Back-End was made on NodeJS using the ExpressJS framework and MySQL
 
-The Back-End and Front-End have their own installations and application runners under NPM
+The Back-End and Front-End have their own dependencies package and runners under NPM
 
-<img src="/assets/documentation/diagram.png" width="80%">
 
 ## Views
 
-<img src="/assets/images/form.png" width="70%">
+<img src="/assets/images/form.png" width="80%">
 
 
 ### npm run +
@@ -36,17 +35,17 @@ The Back-End and Front-End have their own installations and application runners 
 
 Front-End [http://localhost:3000]
 
-Back-End [http://localhost:3001]
+Back-End API [http://localhost:3001]
 
 ## API Endpoints
 
-[http://localhost:3001]
+Server URL : [http://localhost:3001]
 
 ### POST /getsession
 
 #### Parameters
  
- * sessionsele: number
+* session: number
 
 #### Responses
 
