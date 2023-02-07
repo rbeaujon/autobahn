@@ -159,7 +159,6 @@ If it has a DB error with the session data
 * JSON Response: Internal server error, the request return + error message.
 * Console Response: Failed getting the registered user list + error message.
 
-## Out of scope
+## Out-of-scope
   
-  * Verify the responsive design for more mobile models
   * Create conceptual and communication diagrams to understand the application flow visually.
