@@ -13,9 +13,9 @@ describe('Get Session API', () => {
     body: JSON.stringify({data})
   };
 
-	beforeAll(() => {  
+	beforeEach(() => {  
     jest.spyOn(window, 'fetch').mockResolvedValue({
-      json: async () => ({}),
+      json: async () => ([]),
       status: 200, 
       ok: true
   }); })
