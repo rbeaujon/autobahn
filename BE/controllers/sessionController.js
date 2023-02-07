@@ -4,7 +4,6 @@ let conn =  connection();
 exports.postSession = (req, res) => {
 
   const {session} = req.body;
-
   let sqlGetSession = `SELECT * FROM  registered  WHERE session = "${session}"` 
   conn.query(sqlGetSession, (err, result) => {
 

@@ -4,6 +4,8 @@ import GetSessionApi from "../../helper/API/getSession.api";
 import registerData from "../../helper/API/registerData.api";
 import SectorsAPI from "../../helper/API/sectors.api";
 import Regex from "../../helper/regex/regex";
+import { v4 as uuidv4 } from 'uuid';
+
 import "./home.styles.scss";
 
 
@@ -78,8 +80,8 @@ useEffect(() => {
 //Session Control
 useEffect(() => {
   if (!session) {
-    setSession(Date.now());
-    sessionStorage.setItem('session', JSON.stringify(Date.now()));
+    setSession(uuidv4());
+    sessionStorage.setItem('session', JSON.stringify(uuidv4()));
   }
 }, [session]);
 

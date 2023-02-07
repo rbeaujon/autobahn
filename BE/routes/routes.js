@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const router = express.Router();
 
-// sectors route
+
 router.get('/sectors', cors(), sectorsController.getSectors);
 router.get('/register', cors(), registerController.getRegister);
 router.post('/register',cors(),  registerController.postRegister);
