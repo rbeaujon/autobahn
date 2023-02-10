@@ -1,5 +1,4 @@
-import {render, screen} from '@testing-library/react';
-import GetSessionApi from './getSession.api';
+const {GetSessionApi} = require('../../../src/services/API/getSession.api');
 
 describe('Get Session API', () => {
 
@@ -14,14 +13,13 @@ describe('Get Session API', () => {
   };
 
 	beforeEach(() => {  
-    jest.spyOn(window, 'fetch').mockResolvedValue({
+    window.fetch = jest.fn().mockResolvedValue({
       json: async () => ([]),
       status: 200, 
       ok: true
-  }); })
+    }); 
+  })
 	afterAll(() => { jest.clearAllMocks() })
-  
-
   
   it('Should be called with the correct URL', async () => {
     jest.spyOn(window,'fetch').mockResolvedValue({

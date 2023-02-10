@@ -1,0 +1,4 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Should match snapshot 1`] = `<Home />`;
+
