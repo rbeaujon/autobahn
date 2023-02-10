@@ -1,4 +1,4 @@
-const GetSessionApi = async (header) => {
+export const GetSessionApi = async (header) => {
 
   const url = "http://localhost:3001/session";
   const response = await fetch(url, header);
@@ -8,5 +8,3 @@ const GetSessionApi = async (header) => {
     status: response.status
   }
 }
-
-module.exports = GetSessionApi

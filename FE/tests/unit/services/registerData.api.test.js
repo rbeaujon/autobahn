@@ -1,4 +1,4 @@
-import registerData from './registerData.api';
+const {registerData} = require('../../../src/services/API/registerData.api');
 
 describe('registerData', () => {
  
@@ -20,7 +20,7 @@ describe('registerData', () => {
 
   
   beforeEach(() => {
-    jest.spyOn(window,'fetch').mockResolvedValue({
+    window.fetch = jest.fn().mockResolvedValue({
 			json: async => [],
       status: 201, 
 			ok: true
@@ -31,7 +31,7 @@ describe('registerData', () => {
 
   it('should make a successful call to the API', async () => {
 
-    const spy = jest.spyOn(global, 'fetch');
+    const spy = jest.spyOn(window, 'fetch');
     const resp = await registerData(header);
     expect(spy).toHaveBeenCalledWith("http://localhost:3001/register", header);
     expect(spy).toHaveBeenCalledTimes(1);
@@ -41,28 +41,6 @@ describe('registerData', () => {
   });
 
   it('should return an error if the call to the API fails', async () => {
-    
-    // jest.restoreAllMocks();
-    // jest.fn().mockRejectedValue({   
-    //   message: 'Internal server error, the request return',
-    //   status: 500, 
-		// 	ok: false
-    // })
-   
-   
- 
-    // let error;
-    // try{
-    //   await registerData(header);
-    // }
-    // catch(e){
-    //   e = error;
-    // }
-
-    // expect(window.fetch).toHaveBeenCalledWith("http://localhost:3001/register", header);
-    // expect(window.fetch).toHaveBeenCalledTimes(1);
-    // expect(error.status).toBe(500);
-    // expect(error.data).toBe("Bad Request.")
 
     jest.restoreAllMocks();
 

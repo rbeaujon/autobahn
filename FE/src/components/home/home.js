@@ -1,24 +1,22 @@
-import { is } from "@babel/types";
 import React, { useEffect, useState } from "react";
-import GetSessionApi from "../../helper/API/getSession.api";
-import registerData from "../../helper/API/registerData.api";
-import SectorsAPI from "../../helper/API/sectors.api";
-import Regex from "../../helper/regex/regex";
+import {GetSessionApi} from "../../services/API/getSession.api";
+import {registerData} from "../../services/API/registerData.api";
+import {SectorsAPI} from "../../services/API/sectors.api";
+import Regex from "../../utils/helpers/regex";
 import { v4 as uuidv4 } from 'uuid';
 
 import "./home.styles.scss";
 
 
 
-const Home = () => {
+export const Home = () => {
 
 const[sectors, setSectors] = useState([]);
 const[verification, setVerification] = useState({name: false, sector: false, terms: false, error: false, chars: false})
-const [session, setSession] = useState(
-  JSON.parse(sessionStorage.getItem('session')) || null
-);
+const [session, setSession] = useState(JSON.parse(sessionStorage.getItem('session')) || null);
 const[isRegistered, setIsRegistered] = useState(false);
 const[isDisabled, setIsDisabled] = useState(true);
+
 const getSectors = async () => {
   const data = await SectorsAPI();
   setSectors(data);
@@ -34,7 +32,7 @@ const sendToRegister = async (data) => {
     body: JSON.stringify(data)
   };
   const response = await registerData(header)
-  if(response === 201){
+  if(response.status === 201){
     console.log(`Register successfully`);
     document.getElementById("terms").checked = false;
     setIsRegistered(true)
@@ -43,8 +41,6 @@ const sendToRegister = async (data) => {
   }
   handleVerification();
 }
-
-
 
 //Get the Sectors available on DB
 useEffect(() => {
@@ -145,28 +141,26 @@ const {error, name, sector, terms} = verification;
   <div className="home">
     <div className="container">
       <label className="title"> Please enter your name and pick the sectors you are currently involved in </label>
-      {error && name === false && <label className="error"> Required field </label>} 
-      {verification.char && <label className="error"> Special characters are not allowed. </label>} 
+      {error && name === false && <label className="error" data-testid="nameError" >Required field</label>} 
+      {verification.char && <label className="error" data-testid="nameErrorChar">Special characters are not allowed.</label>} 
       <div className={`name`}>
         <input type="text" name="name" data-testid="name" className={`${verification.char && 'errorChar'}`} onChange={() =>  handleValidCharacters() } id="name"/> 
       </div>
-      {error && sector === false &&<label className="error"> Required field </label>} 
-      <div className="sector"> 
-        <select size="5" name="sector" data-testid="sector" id="sector"  multiple> 
-          { sectors && sectors.map(sector => <option value={sector.id} key={sector.id}>{sector.field}</option> )}
+      {error && sector === false &&<label className="error" data-testid="sectorError">Required field</label>} 
+      <div className="sector" > 
+        <select size="5" name="sector" data-testid="sector" id="sector" multiple> 
+          { sectors && sectors.map(sector => <option value={sector.id}  key={sector.id}>{sector.field}</option> )}
         </select> 
         {isRegistered && <div className="isRegistered"> The data was successfully saved </div>} 
       </div>
 
-      {error && terms === false &&<label className="error"> Required field </label>} 
+      {error && terms === false &&<label className="error" data-testid="termsError" >Required field</label>} 
       <div className="terms">
         <input type="checkbox" data-testid="terms" id="terms" onClick={() => handleVerification() } name="terms" />
         <label>Agree to terms</label>
       </div>  
-      <input type="submit" className="submit" onClick={() =>  handleClick() } value="Save" disabled={isDisabled}   />
+      <input type="submit" className="submit" data-testid="submit" onClick={() =>  handleClick() } value="Save" disabled={isDisabled}   />
     </div>
   </div>
   </>
 )}
-
-export default Home
