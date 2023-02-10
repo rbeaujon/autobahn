@@ -9,7 +9,9 @@ It was created to manage a user session without login, and it uses uuid library 
 The BE manages all the validations, and reports by console and JSON all the status codes available.  
 Additionally, a CORS control was added because it is required by the hosting server for this app.
 
- Automated tests are covering all modules.
+Automated tests are covering all modules.
+
+<img src="/assets/images/coverage.png" width="60%">
 
 
 ## Technical details
