@@ -1,7 +1,3 @@
-
-
-# AutoBahn
-
 This repository is a simple form to manage 3 fields (input-text, select, checkbox) with validations and fills the data from DB.
 The design was made using material design.
 It was created to manage a user session without login, and it uses uuid library to generate a random identification.
